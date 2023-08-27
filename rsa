@@ -1,0 +1,43 @@
+#!/usr/bin/python3
+import sys
+
+"""
+File_name: rsa
+Project name: 262 RSA Factoring Challenge.
+"""
+
+
+def factorization():
+
+    """
+    # There are prime numbers p and q that are such.
+    # According to RSA Laboratories, for each RSA number n
+    # Given only n, the challenge is to locate these two prime numbers. n = p × q.
+    # factorize(int) Factorize everything!
+    # is a variable (" "):
+    # Similar to task 0, with the following exception:
+    # ..P and Q are always prime numbers.
+    # ..In the files, there is only one number.
+    # ..How far can you go less than 5 seconds?
+    """
+    try:
+        files = sys.argv[1]
+        with open(files) as f:
+            for numbs in f:
+                numbs = int(numbs)
+                if numbs % 2 == 0:
+                    print("{}={}*{}".format(numbs, numbs // 2, 2))
+                    continue
+                run = 3
+                while run < numbs // 2:
+                    if numbs % run == 0:
+                        print("{}={}*{}".format(numbs, numbs // run, run))
+                        break
+                    run = run + 2
+                if run == (numbs // 2) + 1:
+                    print("{}={}*{}".format(numbs, numbs, 1))
+    except (IndexError):
+        pass
+
+
+factorization()
